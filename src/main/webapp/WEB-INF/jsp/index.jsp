@@ -1,3 +1,5 @@
+<jsp:include page="include/header.jsp" />
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +10,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>This is our first page!</h1>
+    <h1 class="page-title">This is our first page!</h1>
 </body>
 </html>
+
+<jsp:include page="include/footer.jsp" />
