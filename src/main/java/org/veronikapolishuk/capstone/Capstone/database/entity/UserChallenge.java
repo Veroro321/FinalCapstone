@@ -16,16 +16,28 @@ import java.sql.Timestamp;
 public class UserChallenge {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int userChallengeId;
 
-    @Id
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "challenge_id")
-    private Challenge challenge;
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private int userId;
+
+    @Column(name = "challenge_id", insertable = false, updatable = false)
+    private int challengeId;
 
     @Column(name = "date_completed")
     private Timestamp dateCompleted;
+
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "challenge_id", nullable = false)
+    private Challenge challenge;
+
 }
 

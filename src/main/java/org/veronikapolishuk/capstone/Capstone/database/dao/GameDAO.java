@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.veronikapolishuk.capstone.Capstone.database.entity.Game;
 
 public interface GameDAO extends JpaRepository<Game, Integer> {
-    // Additional query methods (if needed) can be defined here
+
 }
