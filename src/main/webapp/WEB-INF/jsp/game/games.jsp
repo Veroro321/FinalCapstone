@@ -51,7 +51,7 @@
         }
         .search-bar {
             position: absolute;
-            bottom: 400px; /* Adjust this value to position the search bar vertically */
+            bottom: -100px; /* Adjust this value to position the search bar vertically */
             left: 50%;
             transform: translateX(-50%);
             width: 30%; /* Adjust the width as needed */

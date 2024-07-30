@@ -20,13 +20,13 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "game_id")
-    private int gameId;
+    private Integer gameId;
 
     @Column(name = "title")
     private String title;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "genre")
     private String genre;
@@ -37,19 +37,16 @@ public class Game {
     @Column(name = "platform")
     private String platform;
 
-    @Column(name = "release_date")
-    private Date releaseDate;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "gameplay_example")
-    private String gameplayExample;
-
     @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "game", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Challenge> challenges;
+    @Column(name = "release_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date releaseDate;
+
+    @OneToMany(mappedBy = "game")
+    private List<GameReview> gameReviews;
+
+    @OneToMany(mappedBy = "game")
+    private Set<UserGame> userGames;
 
 
 }
