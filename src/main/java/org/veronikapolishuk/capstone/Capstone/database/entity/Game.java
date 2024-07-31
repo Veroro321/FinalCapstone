@@ -42,6 +42,9 @@ public class Game {
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date releaseDate;
 
+    @Column(name = "image_url")
+    private String imageUrl; //newly added so images can display
+
     @OneToMany(mappedBy = "game")
     private List<GameReview> gameReviews;
 

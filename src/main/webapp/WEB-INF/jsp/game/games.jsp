@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <jsp:include page="../include/header.jsp" />
 
 <!doctype html>
@@ -64,12 +66,7 @@
     <div class="section-header text-center">
         <h2>Browse our popular games here</h2>
         <form class="search-bar" method="GET" action="/games/search">
-            <div class="input-group">
-                <input type="text" class="form-control" name="query" placeholder="Search games...">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </div>
-            </div>
+           /
         </form>
     </div>
 
@@ -78,160 +75,26 @@
     </div>
 
     <div class="row">
-        <!-- Card 1 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://www.rocketleague.com/images/keyart/rl_evergreen.jpg" class="card-img-top" alt="Tournament 1 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Rocket League</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> June 25, 2024</p>
-                        <p><strong>Location:</strong> Discord</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 1.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S1_2560x1440-d9ca2c0fbaff9d80e8dedfbd726aa438" class="card-img-top" alt="Tournament 2 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Valorant</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> July 5, 2024</p>
-                        <p><strong>Location:</strong> Physical Building</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 2.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
+        <!-- Loop through the games and create a card for each -->
+        <c:forEach items="${games}" var="game">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="${game.imageUrl}" class="card-img-top" alt="${game.title} Image">
+                    <div class="card-body">
+                        <h5 class="card-title">${game.title}</h5>
+                        <div class="card-details">
+                            <p><strong>Release Date:</strong> ${game.releaseDate}</p>
+                            <p><strong>Genre:</strong> ${game.genre}</p>
+                            <p><strong>Platform:</strong> ${game.platform}</p>
+                        </div>
+                        <p class="card-text">${game.description}</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="/games/${game.gameId}" class="btn register-btn">See More</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://hips.hearstapps.com/hmg-prod/images/sw-index-1557955188.jpeg" class="card-img-top" alt="Tournament 3 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Star Wars</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> August 15, 2024</p>
-                        <p><strong>Location:</strong> Discord</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 3.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Card 4 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://www.charlieintel.com/cdn-cgi/image/width=3840,quality=60,format=auto/https://editors.charlieintel.com/wp-content/uploads/2021/10/Halo-thumb.jpg" class="card-img-top" alt="Tournament 4 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Halo</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> September 10, 2024</p>
-                        <p><strong>Location:</strong> Physical Building</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 4.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Card 5 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://i.ytimg.com/vi/OdRk13215zo/maxresdefault.jpg" class="card-img-top" alt="Tournament 5 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Jedi Survivor</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> October 20, 2024</p>
-                        <p><strong>Location:</strong> Discord</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 5.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Card 6 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://www.superjumpmagazine.com/content/images/2022/04/3--cyberpunk2077-always-bring-a-gun-to-a-knife-fight-rgb-1920x1080-344604567.jpg" class="card-img-top" alt="Tournament 6 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Cyberpunk</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> November 30, 2024</p>
-                        <p><strong>Location:</strong> Physical Building</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 6.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Additional Cards -->
-        <!-- Card 7 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://cdn2.unrealengine.com/fortnite-og-social-1920x1080-a5adda66fab9.jpg" class="card-img-top" alt="Tournament 7 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Fortnite</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> December 15, 2024</p>
-                        <p><strong>Location:</strong> Discord</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 7.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Card 8 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://sportshub.cbsistatic.com/i/2022/07/09/90808d74-1ecc-4821-b11f-96a690db5f13/apex-legends.png" class="card-img-top" alt="Tournament 8 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Apex Legends</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> January 5, 2025</p>
-                        <p><strong>Location:</strong> Physical Building</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 8.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Card 9 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://fwmedia.fandomwire.com/wp-content/uploads/2024/05/03024736/gears-of-war-6-needs-to-go-back-to-what-made-the-franchise-great-in-the-first-place-apparently.jpg" class="card-img-top" alt="Tournament 9 Image">
-                <div class="card-body">
-                    <h5 class="card-title">Gears of War</h5>
-                    <div class="card-details">
-                        <p><strong>Date:</strong> February 20, 2025</p>
-                        <p><strong>Location:</strong> Discord</p>
-                    </div>
-                    <p class="card-text">Description of Tournament 9.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn register-btn">See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </c:forEach>
     </div>
 </div>
 
