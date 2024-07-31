@@ -53,10 +53,11 @@
         }
         .search-bar {
             position: absolute;
-            bottom: -100px; /* Adjust this value to position the search bar vertically */
+            bottom: 500px; /* Adjust this value to position the search bar vertically */
             left: 50%;
             transform: translateX(-50%);
-            width: 30%; /* Adjust the width as needed */
+            width: 20%; /* Adjust the width as needed */
+            z-index: 1000; /* Ensure it is above other content */
         }
     </style>
 </head>
@@ -64,9 +65,14 @@
 
 <div class="container mt-5">
     <div class="section-header text-center">
-        <h2>Browse our popular games here</h2>
+        <h2>Browse Our Popular Games Here</h2>
         <form class="search-bar" method="GET" action="/games/search">
-           /
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" placeholder="Search games...">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </div>
+            </div>
         </form>
     </div>
 
