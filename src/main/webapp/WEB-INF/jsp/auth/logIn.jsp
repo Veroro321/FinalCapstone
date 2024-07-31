@@ -1,17 +1,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <jsp:include page="../include/header.jsp" />
 
 <!-- a page header -->
 <section style="background-color:gray">
     <div class="container">
         <div class="row pt-5 pb-5">
-            <h1 class="text-center">Enter Credentials</h1>
+            <h1 class="text-center">Log In</h1>
         </div>
     </div>
 </section>
 
 <section>
     <div class="container">
+<%-- this is the error message --%>
+        <c:if test="${param['error'] eq ''}">
+            <div class="row pt-5 justify-content-center">
+                <div class="col-6">
+                    <div class="alert alert-danger" role="alert">
+                        Invalid Username or Password
+                    </div>
+                </div>
+            </div>
+        </c:if>
+
+
         <div class="row pt-5 ">
             <div class="col-12">
                 <form action="/account/loginProcessingURL" method="post"> <%-- same thing in spring security --%>
