@@ -42,5 +42,20 @@ public class GameController {
         return response;
     }
 
+    @GetMapping("/details")
+    public ModelAndView gameDetails(@RequestParam("id")Integer gameId) {
+        ModelAndView response = new ModelAndView("game/gameDetails");
+
+        Game game = gameDAO.findById(gameId).orElse(null);
+        if (game == null) {
+            log.error("Game with id " + gameId + " not found.");
+            response.addObject("error", "Game not found.");
+        } else {
+            response.addObject("game", game);
+        }
+
+        return response;
+    }
+
 
 }

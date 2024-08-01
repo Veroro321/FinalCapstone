@@ -3,90 +3,86 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<!-- a page header -->
-<section style="background-color:gray">
-    <div class="container">
-        <div class="row pt-5 pb-5">
-            <h1 class="text-center">Log In</h1>
-        </div>
-    </div>
-</section>
+<!-- Add the custom gradient CSS -->
+<style>
+    .gradient-custom {
+        background: #000000;
+    }
 
-<section>
-    <div class="container">
-<%-- this is the error message --%>
-        <c:if test="${param['error'] eq ''}">
-            <div class="row pt-5 justify-content-center">
-                <div class="col-6">
-                    <div class="alert alert-danger" role="alert">
-                        Invalid Username or Password
+    .card-custom {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+    }
+</style>
+
+<!-- Section with black background -->
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card card-custom text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <h2 class="fw-bold mb-2 text-uppercase">Log in</h2>
+                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+                            <c:if test="${param['error'] ne null}">
+                                <div class="alert alert-danger" role="alert">
+                                    Invalid Username or Password
+                                </div>
+                            </c:if>
+
+                            <form action="/account/loginProcessingURL" method="post">
+                                <!-- Email input -->
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
+                                    <input type="text" id="usernameId" name="username"
+                                           class="form-control form-control-lg <c:if test='${bindingResult.hasFieldErrors("email")}'>is-invalid</c:if>"
+                                           value="${form.email}" />
+                                    <label class="form-label" for="usernameId">Email</label>
+                                    <c:if test="${bindingResult.hasFieldErrors('email')}">
+                                        <div class="text-danger">
+                                            <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
+                                                ${error.defaultMessage}<br>
+                                            </c:forEach>
+                                        </div>
+                                    </c:if>
+                                </div>
+
+                                <!-- Password input -->
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
+                                    <input type="password" id="passwordId" name="password"
+                                           class="form-control form-control-lg <c:if test='${bindingResult.hasFieldErrors("password")}'>is-invalid</c:if>"
+                                           value="${form.password}" />
+                                    <label class="form-label" for="passwordId">Password</label>
+                                    <c:if test="${bindingResult.hasFieldErrors('password')}">
+                                        <div class="text-danger">
+                                            <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
+                                                ${error.defaultMessage}<br>
+                                            </c:forEach>
+                                        </div>
+                                    </c:if>
+                                </div>
+
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5"
+                                        type="submit">Login</button>
+                            </form>
+
+                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="mb-0">Don't have an account? <a href="/account/create-account" class="text-white-50 fw-bold">Sign Up</a></p>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </c:if>
-
-
-        <div class="row pt-5 ">
-            <div class="col-12">
-                <form action="/account/loginProcessingURL" method="post"> <%-- same thing in spring security --%>
-
-                    <!-- email input -->
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-2">
-                            <label for="usernameId" class="col-form-label">Email</label>
-                        </div>
-                         <div class="col-4">
-                            <input type="text" id="usernameId" name="username" class="form-control <c:if test="${bindingResult.hasFieldErrors('email')}">is-invalid</c:if>" value="${form.email}">
-                        </div>
-                    </div>
-                    <c:if test="${bindingResult.hasFieldErrors('email')}">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="offset-2 col-4">
-                                <div class="text-danger">
-                                    <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
-                                        ${error.defaultMessage}<br>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                        </div>
-                    </c:if>
-
-
-                    <!-- password input field -->
-                    <div class="row align-items-center justify-content-center pt-3">
-                        <div class="col-2">
-                            <label for="passwordId" class="col-form-label">Password</label>
-                        </div>
-                        <div class="col-4">
-                            <input type="text"
-                                   id="passwordId"
-                                   name="password"
-                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('password')}">is-invalid</c:if>"
-                                   value="${form.password}">
-                        </div>
-                    </div>
-                    <c:if test="${bindingResult.hasFieldErrors('password')}">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="offset-2 col-4">
-                                <div style="color:red">
-                                    <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
-                                        ${error.defaultMessage}<br>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                        </div>
-                    </c:if>
-
-                    <div class="row justify-content-center pt-3 ">
-                        <div class="col-auto text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 </section>
-
 
 <jsp:include page="../include/footer.jsp" />

@@ -22,7 +22,6 @@
         .card-body {
             background: linear-gradient(45deg, #6a11cb, #2575fc);
             color: white;
-
         }
         .card-title, .card-details, .card-text {
             color: white;
@@ -49,15 +48,30 @@
             background: linear-gradient(135deg, #6a11cb, #2575fc); /* Linear gradient background */
             border-radius: 10px; /* Optional: Rounded corners */
             color: white; /* Ensure text is readable on the gradient background */
-           <%-- background: url('https://wallpapergod.com/images/hd/4k-gaming-4000X2250-wallpaper-jcjg88bi534v13fl.webp') no-repeat center center; --%>
+        <%-- background: url('https://wallpapergod.com/images/hd/4k-gaming-4000X2250-wallpaper-jcjg88bi534v13fl.webp') no-repeat center center; --%>
         }
         .search-bar {
-            position: absolute;
-            bottom: 500px; /* Adjust this value to position the search bar vertically */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20%; /* Adjust the width as needed */
-            z-index: 1000; /* Ensure it is above other content */
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+        .search-bar button {
+            background-color: #05f385;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #04c373;
         }
     </style>
 </head>
@@ -65,19 +79,23 @@
 
 <div class="container mt-5">
     <div class="section-header text-center">
-        <h2>Browse Our Popular Games Here</h2>
-        <form class="search-bar" method="GET" action="/games/search">
-            <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="Search games...">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </div>
-            </div>
-        </form>
+        <h2 style="font-size: 2.5rem;">Browse Our Most Popular Games</h2>
     </div>
 
-    <div class="col-md-12 mb-4">
-        <h1 class="text-white mb-5 featured-tournaments-header">Latest Games</h1>
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="text-white mb-0 featured-tournaments-header">Latest Games</h1>
+        </div>
+        <div class="col-md-4">
+            <form class="search-bar" method="GET" action="/games/search">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" placeholder="Search games...">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="row">
@@ -93,9 +111,9 @@
                             <p><strong>Genre:</strong> ${game.genre}</p>
                             <p><strong>Platform:</strong> ${game.platform}</p>
                         </div>
-                        <p class="card-text">${game.description}</p>
+                            <%--                        <p class="card-text">${game.description}</p>--%>
                         <div class="d-flex justify-content-center">
-                            <a href="/games/${game.gameId}" class="btn register-btn">See More</a>
+                            <a href="/games/details?id=${game.gameId}" class="btn register-btn">See More</a>
                         </div>
                     </div>
                 </div>
@@ -104,11 +122,8 @@
     </div>
 </div>
 
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
-
-<jsp:include page="../include/footer.jsp" />

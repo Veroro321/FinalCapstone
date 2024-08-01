@@ -17,7 +17,7 @@
         .gradient-bar {
             height: 20px;
             background: linear-gradient(45deg, #6a11cb, #2575fc);
-            margin-bottom: 60px;
+            margin-bottom: 0px;
         }
     </style>
 </head>
@@ -43,7 +43,7 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Users <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/profile">Account <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/games">Games<span class="sr-only">(current)</span></a>

@@ -45,6 +45,10 @@ public class Game {
     @Column(name = "image_url")
     private String imageUrl; //newly added so images can display
 
+//    @Column(name = "background_url")
+//    private String backgroundUrl;
+
+    //newly added
     @OneToMany(mappedBy = "game")
     private List<GameReview> gameReviews;
 
