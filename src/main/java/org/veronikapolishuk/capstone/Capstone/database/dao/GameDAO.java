@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface GameDAO extends JpaRepository<Game, Integer> {
 
-    @Query("select g from Game g where g.title like concat('%', :title, '%')")
+    @Query("select g from Game g where lower(g.title) like lower(concat('%', :title, '%'))")
     List<Game> findGameByTitle(@Param("title") String title);
 
 }

@@ -1,129 +1,135 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <jsp:include page="../include/header.jsp" />
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Games</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Gallery</title>
     <style>
         body {
             background-color: black;
-            color: white; /* Optional: Set text color to white for better readability */
-        }
-        .page-title {
-            color: white; /* Optional: Ensure the title text is visible */
-        }
-        .card-body {
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
             color: white;
+            font-family: Arial, sans-serif;
         }
-        .card-title, .card-details, .card-text {
-            color: white;
+        .game-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
         }
-        .register-btn {
-            background-color: #05f385;
-            border: none;
+        .game-card {
+            background-color: #000000;
+            border-radius: 15px;
+            overflow: hidden;
+            width: calc(20% - 10px);
+            box-shadow: 0 4px 8px rgba(254, 239, 239, 0.3);
+            position: relative;
+        }
+        .game-card img {
+            width: 100%;
+            border-bottom: 2px solid #444;
+        }
+        .card-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
             color: white;
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
             border-radius: 5px;
-            display: block; /* Ensures button spans full width */
         }
-        .card {
-            border: 2px solid black; /* Add black border to each card */
-            overflow: hidden; /* Ensures the gradient fills inside the border */
-            border-radius: 10px; /* Rounded corners */
+        .game-card:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease-in-out;
         }
-        .section-header {
-            margin-top: 30px;
-            margin-bottom: 60px;
-            padding: 100px; /* Optional: Add padding for better spacing */
-            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Linear gradient background */
-            border-radius: 10px; /* Optional: Rounded corners */
-            color: white; /* Ensure text is readable on the gradient background */
-        <%-- background: url('https://wallpapergod.com/images/hd/4k-gaming-4000X2250-wallpaper-jcjg88bi534v13fl.webp') no-repeat center center; --%>
+        .game-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
-        .search-bar {
+        .game-card:hover::after {
+            opacity: 1;
+        }
+        .search-container {
             display: flex;
             justify-content: flex-end;
             margin-bottom: 20px;
         }
-        .search-bar input {
-            width: 80%;
-            padding: 10px;
-            border-radius: 5px;
+        .search-bar {
             border: 1px solid #ccc;
-            margin-right: 10px;
+            border-radius: 5px;
+            padding: 10px 10px;
+            font-size: 16px;
+            margin-left: 600px;
         }
-        .search-bar button {
-            background-color: #05f385;
+        .search-button {
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             border: none;
-            color: white;
-            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            color: white;
+
         }
-        .search-bar button:hover {
-            background-color: #04c373;
+        h1 {
+            text-align: center;
+
         }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 100px;
+            margin-left: 150px;
+        }
+        <%--.section-header {--%>
+        <%--    margin-top: 30px;--%>
+        <%--    margin-bottom: 60px;--%>
+        <%--    padding: 100px; /* Optional: Add padding for better spacing */--%>
+        <%--    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Linear gradient background */--%>
+        <%--    border-radius: 10px; /* Optional: Rounded corners */--%>
+        <%--    color: white; /* Ensure text is readable on the gradient background */--%>
+        <%--&lt;%&ndash; background: url('https://wallpapergod.com/images/hd/4k-gaming-4000X2250-wallpaper-jcjg88bi534v13fl.webp') no-repeat center center; &ndash;%&gt;--%>
+
+
     </style>
 </head>
 <body>
 
-<div class="container mt-5">
-    <div class="section-header text-center">
-        <h2 style="font-size: 2.5rem;">Browse Our Most Popular Games</h2>
-    </div>
+<%--<div class="container mt-5">--%>
+<%--    <div class="section-header text-center">--%>
+<%--        <h2 style="font-size: 2.5rem;">Browse Our Most Popular Games</h2>--%>
+<%--    </div>--%>
 
-    <div class="row mb-4">
-        <div class="col-md-8">
-            <h1 class="text-white mb-0 featured-tournaments-header">Latest Games</h1>
-        </div>
-        <div class="col-md-4">
-            <form class="search-bar" method="GET" action="/games/search">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search games...">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-light" type="submit">Search</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="row">
-        <!-- Loop through the games and create a card for each -->
-        <c:forEach items="${games}" var="game">
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="${game.imageUrl}" class="card-img-top" alt="${game.title} Image">
-                    <div class="card-body">
-                        <h5 class="card-title">${game.title}</h5>
-                        <div class="card-details">
-                            <p><strong>Release Date:</strong> ${game.releaseDate}</p>
-                            <p><strong>Genre:</strong> ${game.genre}</p>
-                            <p><strong>Platform:</strong> ${game.platform}</p>
-                        </div>
-                            <%--                        <p class="card-text">${game.description}</p>--%>
-                        <div class="d-flex justify-content-center">
-                            <a href="/games/details?id=${game.gameId}" class="btn register-btn">See More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
+<div class="header-container">
+    <h1>Latest Games</h1>
+    <div class="search-container">
+        <form method="GET" action="/games/search">
+            <input type="text" value="${search}" class="search-bar" name="search" placeholder="Search Games...">
+            <button type="submit" class="search-button">Search</button>
+        </form>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<div class="game-gallery">
+    <c:forEach items="${games}" var="game">
+        <a href="/games/details?id=${game.gameId}" class="game-card">
+            <img src="${game.imageUrl}" alt="${game.title}">
+        </a>
+    </c:forEach>
+</div>
+
 </body>
 </html>
+
