@@ -103,12 +103,12 @@
             margin-left: -80px;
         }
 
-        .image-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center; /* Optional: Center images */
-            margin-top: 20px; /* Adjust spacing as needed */
-        }
+        /*.image-gallery {*/
+        /*    display: flex;*/
+        /*    flex-wrap: wrap;*/
+        /*    justify-content: center; !* Optional: Center images *!*/
+        /*    margin-top: 20px; !* Adjust spacing as needed *!*/
+        /*}*/
 
         .details p {
             margin-bottom: 5px;
@@ -117,11 +117,32 @@
 
         }
 
-        #description {
-            color: white;           /* Text color */
-            padding: 20px;          /* Padding inside the div */
-            margin-left: 250px;
+        .description-video-container {
+            display: flex;
+            margin: 20px;
+            gap: 1px; /* Adds space between description and video */
+        }
 
+        #description {
+            color: white;
+            padding: 20px;
+            margin: 5px 0px 0px 230px;
+            flex: 1;
+
+
+        }
+        #video{
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden; /* Ensures rounded corners are visible */
+            width: 1200px;
+            height: 300px; /* Fixed height */
+            margin: 5px 300px 0px 0px;
+
+        }
+        #video iframe {
+            width: 100%;
+            height: 100%;
         }
 
     </style>
@@ -161,28 +182,19 @@
 
 </div>
 
-<div class="details" id="description">
-    <p>Genre: ${game.genre}</p>
-    <p>Theme: ${game.theme}</p>
-    <p>Release Date: ${game.releaseDate}</p>
-    <p>Platform: ${game.platform}</p>
+<div class="description-video-container">
+    <div class="details" id="description">
+        <h1> Details </h1>
+        <p>Genre: ${game.genre}</p>
+        <p>Theme: ${game.theme}</p>
+        <p>Release Date: ${game.releaseDate}</p>
+        <p>Platform: ${game.platform}</p>
+    </div>
 
-    <section class="video-section">
-        <div class="row mb-4">
-            <div class="col-12 text-center">
-                <iframe width="560" height="405" src="https://www.youtube.com/embed/VRaobDJjiec?si=He6QERHdFSkBUWa8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
+    <div class="video-section" id="video">
+        <iframe src="https://www.youtube.com/watch?v=2FLA_6A_i5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
 </div>
-
-
-
-
-
-
-
 
 
 <%--<section class="game-description">--%>
