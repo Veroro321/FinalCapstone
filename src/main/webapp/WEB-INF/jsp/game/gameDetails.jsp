@@ -11,208 +11,174 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: black;
-            /* Add a linear gradient if desired */
-            /* background-image: linear-gradient(to right, #000000, #333333); */
         }
 
         .container {
             display: flex;
             align-items: center;
-            padding: 100px 10px 20px 100px;
-            justify-content: flex-end; /* Pushes content to the right */
+            padding: 100px 10px 20px 10px;
+            justify-content: flex-end;
         }
 
         .container img {
             width: 280px;
             height: auto;
             margin-left: 30px;
-            border-radius: 10px; /* Adds rounded corners */
+            border-radius: 10px;
         }
 
         .details {
             color: white;
             text-align: left;
-            flex-grow: 1; /* Ensures details take up remaining space */
-            margin-left: 80px; /* Adds a 20px margin to the left */
+            flex-grow: 1;
+            margin-left: 180px;
+            padding: 0px; /* Adjust padding as needed */
+
         }
 
         .details h1 {
             font-size: 3em;
             margin-bottom: 10px;
-            color: white;
-
-
         }
 
         .details p {
             margin-bottom: 5px;
             font-size: 1.2em;
-        }
-
-
-        .image-gallery img {
-            width: 300px; /* Adjust image width */
-            height: auto;
-            margin: 20px; /* Add spacing between images */
-            border-radius: 30px; /* Rounded corners for the button */
-            transition: transform 0.3s ease; /* Smooth transition effect */
-        }
-
-        .image-gallery img:hover {
-            transform: scale(1.1); /* Enlarge image on hover */
-        }
-
-        .game-description p {
-
-            font-size: 1.2em;
-            line-height: 1.5; /* Increases line spacing for readability */
-            color: white;
-        }
-
-        .game-description {
-            justify-content: center; /* Optional: Center images */
-            margin-left: 280px; /* Aligns description with the right edge of the image */
-            max-width: calc(100% - 300px); /* Ensures it does not exceed the available width */
-            margin-top: 0px; /* Reduced top margin to move closer to the image */
-            color: white;
-            padding: 0px;
-            border-radius: 10px; /* Rounded corners */
-        }
-        .description-button {
-            display: block; /* Ensure button is on its own line */
-            margin-top: 50px; /* Remove margin-top */
-            padding: 15px 30px; /* Increase padding to make the button larger */
-            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Light purple color */
-            color: white;
-            border: none;
-            border-radius: 30px; /* Rounded corners for the button */
-            font-size: 1em;
-            cursor: pointer; /* Pointer cursor on hover */
-            text-align: center; /* Center text inside button */
         }
 
         .button-container {
             display: flex;
-            gap: 20px; /* Adjust the gap between buttons as needed */
-            margin-left: -80px;
+            gap: 20px;
+            margin-left: 10px;
         }
 
-        /*.image-gallery {*/
-        /*    display: flex;*/
-        /*    flex-wrap: wrap;*/
-        /*    justify-content: center; !* Optional: Center images *!*/
-        /*    margin-top: 20px; !* Adjust spacing as needed *!*/
-        /*}*/
-
-        .details p {
-            margin-bottom: 5px;
-            font-size: 1.2em;
+        .description-button {
+            display: block;
+            margin-top: 50px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
-
+            border: none;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            text-align: center;
         }
 
-        .description-video-container {
+        .details-reviews-wrapper {
             display: flex;
-            margin: 20px;
-            gap: 1px; /* Adds space between description and video */
-        }
-
-        #description {
+            padding: 5px;
             color: white;
-            padding: 20px;
-            margin: 5px 0px 0px 230px;
-            flex: 1;
-
-
         }
-        #video{
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden; /* Ensures rounded corners are visible */
-            width: 1200px;
-            height: 300px; /* Fixed height */
-            margin: 5px 300px 0px 0px;
 
+        .details {
+            margin-top: 20px;
+            margin-right: 30px;
+            margin-bottom: 20px;
+            margin-left: 190px;
         }
-        #video iframe {
+
+        .reviews {
+            margin-top: -10px;
+            margin-right: 130px;
+            margin-bottom: 30px;
+            margin-left: 40px;
+            padding: 20px; /* Optional: Adjust padding if needed */
+        }
+
+        .reviews table {
             width: 100%;
-            height: 100%;
+            border-collapse: collapse;
+            margin-right: 90px;
+
         }
 
+        .reviews th, .reviews td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .reviews th {
+            background-color: #333;
+        }
     </style>
-
-    <script>
-        function addToGames(button) {
-            button.textContent = 'Added';
-            button.classList.add('added');
-            button.disabled = true;
-        }
-    </script>
 </head>
 <body>
 <div class="container">
-    <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_9KJm-maHyRnvmWU67LlnCsUqOFSZWCQFi6emCtbnGUZWlG_JMp0U7GvEBI9_JyfpRuhG
-" alt="Game Image">
+    <img src="${game.imageUrl}" alt="${game.title}">
     <div class="details">
         <h1>${game.title}</h1>
-<%--        <p>Genre: ${game.genre}</p>--%>
-<%--        <p>Theme: ${game.theme}</p>--%>
-<%--        <p>Release Date: ${game.releaseDate}</p>--%>
-<%--        <p>Platform: ${game.platform}</p>--%>
-        <p>
-           Description: ${game.description}
-        </p>
-        <div class="details">
-            <div class="button-container">
-                <button class="description-button">Write A Review</button>
-                <button class="description-button" onclick="addToGames(this)">Add To Games</button>
-            </div>
-
-
+        <p>Description: ${game.description}</p>
+        <div class="button-container">
+            <button class="description-button">Write A Review</button>
+            <button class="description-button" onclick="addToGames(this)">Add To Games</button>
         </div>
-
     </div>
-
-
 </div>
 
-<div class="description-video-container">
+<div class="details-reviews-wrapper">
     <div class="details" id="description">
-        <h1> Details </h1>
+        <h1>Details</h1>
         <p>Genre: ${game.genre}</p>
         <p>Theme: ${game.theme}</p>
         <p>Release Date: ${game.releaseDate}</p>
-        <p>Platform: ${game.platform}</p>
     </div>
 
-    <div class="video-section" id="video">
-        <iframe src="https://www.youtube.com/watch?v=2FLA_6A_i5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="reviews" id="reviews">
+        <h1>Reviews</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Reviewer</th>
+                <th>Rating</th>
+                <th>Review Text</th>
+                <th>Review Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>5/5</td>
+                <td>Amazing game with stunning graphics and engaging storyline.</td>
+                <td>2023-05-01</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>4/5</td>
+                <td>Great gameplay but encountered a few bugs.</td>
+                <td>2023-05-02</td>
+            </tr>
+            <tr>
+                <td>Sam Wilson</td>
+                <td>4.5/5</td>
+                <td>Enjoyed every moment, especially the combat system.</td>
+                <td>2023-05-03</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
+<script>
+    function addToGames(button) {
+        button.textContent = 'Added';
+        button.classList.add('added');
+        button.disabled = true;
+    }
+</script>
 
-<%--<section class="game-description">--%>
-<%--    <p>--%>
-<%--        ${game.description}--%>
-<%--    </p>--%>
-<%--</section>--%>
-
-<%--<section class="image-gallery">--%>
-<%--    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz_ZSO-KV3KUz5dEtLz-ckfu51kmu2FQc6tg&s" alt="Image 2">--%>
-<%--    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_BULJHg6NZgL2xWUDHRn86XYeaYpJY0T4g&s" alt="Image 3">--%>
-<%--    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyjapkXBLRsW4NJ1PqR38BjKfTsUEzo_VTQw&s" alt="Image 3">--%>
-<%--</section>--%>
-
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmW3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
 
 <jsp:include page="../include/footer.jsp" />
