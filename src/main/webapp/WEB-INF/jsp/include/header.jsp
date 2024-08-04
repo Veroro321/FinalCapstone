@@ -48,6 +48,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/games">Games<span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/games/details?id=3">Game Detail<span class="sr-only">(current)</span></a>
+            </li>
             <!-- Login and Logout links based on authentication status -->
             <sec:authorize access="!isAuthenticated()">
                 <li class="nav-item active">

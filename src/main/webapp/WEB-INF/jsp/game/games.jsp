@@ -115,8 +115,8 @@
 <div class="header-container">
     <h1>Latest Games</h1>
     <div class="search-container">
-        <form method="GET" action="/games/search">
-            <input type="text" value="${search}" class="search-bar" name="search" placeholder="Search Games...">
+        <form method="GET" action="/games/search"> <%-- not sure if method+"GET" is needed here --%>
+            <input type="text" value="${search}" class="search-bar" name="search" placeholder="Search Games..."> <%-- the name here is what is going to go in our url, value="${search} is going to add --%>
             <button type="submit" class="search-button">Search</button>
         </form>
     </div>

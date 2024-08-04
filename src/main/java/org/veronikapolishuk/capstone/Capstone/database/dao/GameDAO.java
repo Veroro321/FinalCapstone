@@ -9,7 +9,12 @@ import java.util.List;
 
 public interface GameDAO extends JpaRepository<Game, Integer> {
 
+    Game findByGameId(Integer gameId); //this query is the Spring Data JPA can use this one instead...
+
     @Query("select g from Game g where lower(g.title) like lower(concat('%', :title, '%'))")
-    List<Game> findGameByTitle(@Param("title") String title);
+    List<Game> findGameByTitle(@Param("title") String title); //dont necessarly need the param here
+
+    List<Game> findAll();
+
 
 }

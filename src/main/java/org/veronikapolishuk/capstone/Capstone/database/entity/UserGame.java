@@ -21,15 +21,18 @@ public class UserGame {
     @Column(name = "id")
     private Integer Id;
 
-    @ToString.Exclude
+
     @Column(name = "added_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date addedDate;
 
+
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "game_id", nullable = false)
     private Game game;

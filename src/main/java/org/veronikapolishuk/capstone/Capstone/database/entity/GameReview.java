@@ -22,21 +22,28 @@ public class GameReview {
     @Column(name = "review_id")
     private Integer  reviewId;
 
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Integer  userId;
+
+    @Column(name = "game_id", insertable = false, updatable = false)
+    private Integer  gameId;
+
     @Column(name = "rating")
     private Integer rating;
 
     @Column(name = "review_text")
     private String reviewText;
 
-    @ToString.Exclude
     @Column(name = "review_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date reviewDate;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "game_id", nullable = false)
     private Game game;
