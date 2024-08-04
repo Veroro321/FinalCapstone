@@ -38,7 +38,7 @@ public class ReviewController {
     private UserDAO userDAO;
 
     @GetMapping("/createReview") // this is what is displaying the create a review page
-    public ModelAndView createReview() {
+    public ModelAndView createReview(@RequestParam(required = false) Integer gameId, @RequestParam(required = false) Integer userId) {
         ModelAndView response = new ModelAndView("review/review");
 
         // depending on how the page is made I may create a page with the actual game or whatever in there...

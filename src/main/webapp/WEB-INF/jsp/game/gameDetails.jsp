@@ -89,9 +89,9 @@
 
         .reviews {
             margin-top: 5px;
-            margin-right: 300px;
+            margin-right: 200px;
             margin-bottom: 30px;
-            margin-left: 40px;
+            margin-left: 170px;
 
         }
 
@@ -100,17 +100,20 @@
             border-collapse: collapse;
             margin-right: 90px;
 
+
         }
 
         .reviews th, .reviews td {
             border: 1px solid white;
             padding: 8px;
             text-align: left;
+            color: white;
         }
 
-        .reviews th {
-            background-color: #333;
-        }
+        /*.reviews th {*/
+        /*    background: linear-gradient(135deg, #6a11cb, #2575fc);*/
+
+        /*}*/
     </style>
 </head>
 <body>
@@ -120,10 +123,11 @@
         <h1>${game.title}</h1>
         <p>Description: ${game.description}</p>
         <div class="button-container">
-            <button class="description-button" onclick="location.href='/createReview?gameId=${game.gameId}'">Write A
+            <button class="description-button"
+                    onclick="location.href='/createReview?gameId=${game.gameId}&userId=${user.userId}'">Write A
                 Review
             </button>
-            <button class="description-button" onclick="addToGames(this)">Add To Games</button>
+            <button class="description-button" onclick="addToGames(this)">Add To My Games</button>
         </div>
     </div>
 </div>

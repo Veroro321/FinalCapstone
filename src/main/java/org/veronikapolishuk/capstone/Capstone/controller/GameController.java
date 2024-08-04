@@ -29,6 +29,8 @@ public class GameController {
     @GetMapping//this is going to add all the games to our page from the database
     public ModelAndView index() {
         ModelAndView response = new ModelAndView("game/games");
+
+
         List<Game> games = gameDAO.findAll();
         response.addObject("games", games);
         response.addObject("search", "");
