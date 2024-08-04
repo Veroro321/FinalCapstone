@@ -108,6 +108,14 @@ public class ReviewController {
 
         return response;
     }
+
+    @GetMapping("/myReviews") //please put the link in spring security so user has to sign in first to get access
+    public ModelAndView createSubmit() {
+        ModelAndView response = new ModelAndView("review/myReviews");
+        return response;
+    }
+
+
 }
 
 //
