@@ -13,95 +13,114 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: black !important;
+        * {
+            box-sizing: border-box;
         }
 
-        .review-form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        input[type=text], input[type=number], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
         }
 
-        .review-form {
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit], button[type=submit] {
             color: white;
-            width: 50%;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #1c1c1c;
-            border-radius: 10px;
-        }
-
-        .review-form h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .review-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .review-form label {
-            font-size: 1.2em;
-            color: white;
-        }
-
-        .review-form input, .review-form textarea {
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px 20px;
             border: none;
-            font-size: 1em;
-        }
-
-        .review-form button {
-            padding: 15px;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2em;
+            border-radius: 4px;
             cursor: pointer;
+            float: right;
         }
 
-        .review-form button:hover {
-            background: linear-gradient(135deg, #4a0c9b, #1f5bbf);
+        input[type=submit]:hover, button[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        @media screen and (max-width: 600px) {
+            .col-25, .col-75, input[type=submit], button[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
         }
     </style>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"/>
-
-<div class="review-form-container">
-    <div class="review-form" id="review-form">
-        <h2>Create a New Review</h2>
-        <form action="/createReviewSubmit" method="post">
-            <div>
-                <label for="gameId">Game ID:</label>
+<div class="container">
+    <h2>Create a New Review</h2>
+    <form action="/createReviewSubmit" method="post">
+        <div class="row">
+            <div class="col-25">
+                <label for="gameId">Game ID</label>
+            </div>
+            <div class="col-75">
                 <input type="number" id="gameId" name="gameId" value="${gameId}" required>
             </div>
-            <div>
-                <label for="userId">User ID:</label>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="userId">User ID</label>
+            </div>
+            <div class="col-75">
                 <input type="number" id="userId" name="userId" value="${userId}" required>
             </div>
-            <div>
-                <label for="rating">Rating:</label>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="rating">Rating</label>
+            </div>
+            <div class="col-75">
                 <input type="number" id="rating" name="rating" value="${rating}" required>
             </div>
-            <div>
-                <label for="reviewText">Review Text:</label>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="reviewText">Review Text</label>
+            </div>
+            <div class="col-75">
                 <textarea id="reviewText" name="reviewText" required>${reviewText}</textarea>
             </div>
+        </div>
+        <br>
+        <div class="row">
             <button type="submit">Submit Review</button>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
+
+</body>
+</html>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmW3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

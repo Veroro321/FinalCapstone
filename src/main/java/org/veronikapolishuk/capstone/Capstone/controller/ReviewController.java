@@ -20,6 +20,7 @@ import org.veronikapolishuk.capstone.Capstone.database.entity.Game;
 import org.veronikapolishuk.capstone.Capstone.database.entity.GameReview;
 import org.veronikapolishuk.capstone.Capstone.database.entity.User;
 import org.veronikapolishuk.capstone.Capstone.form.CreateReviewFormBean;
+import org.veronikapolishuk.capstone.Capstone.security.AuthenticatedUserUtilities;
 
 import java.util.Date;
 import java.util.List;
@@ -36,6 +37,10 @@ public class ReviewController {
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private AuthenticatedUserUtilities authenticatedUserUtilities;
+
 
     @GetMapping("/createReview") // this is what is displaying the create a review page
     public ModelAndView createReview(@RequestParam(required = false) Integer gameId, @RequestParam(required = false) Integer userId) {

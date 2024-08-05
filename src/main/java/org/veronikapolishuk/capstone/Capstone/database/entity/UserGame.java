@@ -21,11 +21,15 @@ public class UserGame {
     @Column(name = "id")
     private Integer Id;
 
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Integer userId;
+
+    @Column(name = "game_id", insertable = false, updatable = false)
+    private Integer gameId;
 
     @Column(name = "added_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date addedDate;
-
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)

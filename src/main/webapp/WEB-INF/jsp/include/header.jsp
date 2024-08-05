@@ -52,13 +52,10 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/games">Games<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/games/details?id=3">Game Detail<span class="sr-only">(current)</span></a>
-            </li>
 
             <sec:authorize access="isAuthenticated()">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/games/details?id=3">My Games<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/games/myGames">My Games<span class="sr-only">(current)</span></a>
                 </li>
             </sec:authorize>
 
@@ -85,14 +82,24 @@
             </sec:authorize>
 
 
-            <li class="nav-item active">
-                <a class="nav-link" href="/account/create-account">Sign Up</a>
-            </li>
+            <sec:authorize access="hasAnyAuthority('ADMIN')">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/dashboard">Admin Dashboard<span
+                            class="sr-only">(current)</span></a>
+                </li>
+            </sec:authorize>
+
+            <sec:authorize access="!isAuthenticated()">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/account/create-account">Sign Up</a>
+                </li>
+            </sec:authorize>
+
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <%--        <form class="form-inline my-2 my-lg-0">--%>
+        <%--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--%>
+        <%--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
+        <%--        </form>--%>
     </div>
 </nav>
 

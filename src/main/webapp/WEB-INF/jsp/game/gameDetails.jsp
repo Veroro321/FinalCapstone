@@ -127,7 +127,11 @@
                     onclick="location.href='/createReview?gameId=${game.gameId}&userId=${user.userId}'">Write A
                 Review
             </button>
-            <button class="description-button" onclick="addToGames(this)">Add To My Games</button>
+            <form action="/games/addToMyGames" method="post" style="display:inline;">
+                <input type="hidden" name="gameId" value="${game.gameId}">
+                <button type="submit" class="description-button">Add To My Games</button>
+            </form>
+
         </div>
     </div>
 </div>

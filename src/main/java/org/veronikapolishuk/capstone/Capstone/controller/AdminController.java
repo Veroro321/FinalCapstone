@@ -22,7 +22,7 @@ public class AdminController {
 
     @GetMapping("/dashboard")
     public ModelAndView dashboard() {
-        ModelAndView response = new ModelAndView("admin/dashboard");
+        ModelAndView response = new ModelAndView("admin/dashboard");  //this is the page where we can do edit for admin???
 
         User user = authenticatedUserUtilities.getCurrentUser();
         log.debug(user.toString());
