@@ -48,14 +48,17 @@ public class ReviewController {
 
         // depending on how the page is made I may create a page with the actual game or whatever in there...
         List<Game> games = gameDAO.findAll();
+
         response.addObject("games", games);
+        response.addObject("gameId", gameId);
+        response.addObject("userId", userId);
 
         return response;
     }
 
     //this is going to be for submitting the review
 
-    @PostMapping("/createReviewSubmit") // should create a form bean please
+    @PostMapping("/createReviewSubmit")
     public ModelAndView createReviewSubmit(@Valid CreateReviewFormBean form, BindingResult bindingResult) {
 
         ModelAndView response = new ModelAndView("review/review");
@@ -84,8 +87,7 @@ public class ReviewController {
 
 
         Game game = gameDAO.findByGameId(form.getGameId());
-        User user = userDAO.findByUserId(form.getUserId());
-
+        User user = authenticatedUserUtilities.getCurrentUser();
 
         if (game != null && user != null) {
             GameReview review = new GameReview();
@@ -96,7 +98,7 @@ public class ReviewController {
             review.setReviewDate(new Date());
 
             gameReviewDAO.save(review);
-            response.setViewName("redirect:/games/details?id=" + form.getGameId());
+            response.setViewName("redirect:/games/details?id=" + form.getGameId()); //that's were all the reviews are shown
         } else {
             response.addObject("errorMessage", "Game or User not found. Please check your input.");
 
@@ -104,8 +106,9 @@ public class ReviewController {
                 bindingResult.rejectValue("gameId", "error.form", "Game not found.");
             }
             if (user == null) {
-                bindingResult.rejectValue("userId", "error.form", "User not found.");
+                response.setViewName("redirect:/account/loginPageUrl");
             }
+
             response.addObject("bindingResult", bindingResult);
             response.addObject("games", gameDAO.findAll());
             response.setViewName("review/createReview");
@@ -114,13 +117,41 @@ public class ReviewController {
         return response;
     }
 
-    @GetMapping("/myReviews") //please put the link in spring security so user has to sign in first to get access
-    public ModelAndView createSubmit() {
+    @GetMapping("/myReviews") //this will display all of user reviews
+    public ModelAndView myReviews() {
         ModelAndView response = new ModelAndView("review/myReviews");
+
+        User user = authenticatedUserUtilities.getCurrentUser();
+        if (user != null) {
+            List<GameReview> reviews = gameReviewDAO.findByUser(user);
+            response.addObject("reviews", reviews);
+        } else {
+            response.setViewName("redirect:/loginPageUrl");
+        }
+
+        return response;
+    }
+
+    @PostMapping("/deleteReview")
+    public ModelAndView deleteReview(@RequestParam Integer reviewId) {
+        ModelAndView response = new ModelAndView("redirect:/myReviews");
+
+        User user = authenticatedUserUtilities.getCurrentUser();
+        if (user != null) {
+            GameReview review = gameReviewDAO.findById(reviewId).orElse(null);
+            if (review != null && review.getUser().equals(user)) {
+                gameReviewDAO.deleteById(reviewId);
+            } else {
+                response.addObject("errorMessage", "Review not found or you don't have permission to delete it.");
+            }
+        } else {
+            response.setViewName("redirect:/loginPageUrl");
+        }
+
         return response;
     }
 
 
 }
 
-//
+

@@ -10,32 +10,21 @@
     <title>Document</title>
 </head>
 <body>
-
-<div class="review-form-container">
-    <div class="review-form" id="review-form">
-        <h2>Create a New Review</h2>
-        <form action="/createReviewSubmit" method="post">
-            <div>
-                <label for="gameId">Game ID:</label>
-                <input type="number" id="gameId" name="gameId" value="${gameId}" required>
-            </div>
-            <div>
-                <label for="userId">User ID:</label>
-                <input type="number" id="userId" name="userId" value="${userId}" required>
-            </div>
-            <div>
-                <label for="rating">Rating:</label>
-                <input type="number" id="rating" name="rating" value="${rating}" required>
-            </div>
-            <div>
-                <label for="reviewText">Review Text:</label>
-                <textarea id="reviewText" name="reviewText" required>${reviewText}</textarea>
-            </div>
-            <button type="submit">Submit Review</button>
-        </form>
-    </div>
+<h1>My Reviews</h1>
+<div class="review-list">
+    <c:forEach items="${reviews}" var="review">
+        <div class="review-card">
+            <h2>${review.game.title}</h2>
+            <p>Rating: ${review.rating}</p>
+            <p>${review.reviewText}</p>
+            <p>Reviewed on: ${review.reviewDate}</p>
+            <form action="/deleteReview" method="post">
+                <input type="hidden" name="reviewId" value="${review.reviewId}">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    </c:forEach>
 </div>
-
 
 </body>
 </html>

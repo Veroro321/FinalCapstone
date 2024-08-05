@@ -17,10 +17,10 @@ public class CreateReviewFormBean {
 
     private Integer reviewId;
 
-    @NotNull(message = "Game ID is required")
+    //    @NotNull(message = "Game ID is required")
     private Integer gameId;
 
-    @NotNull(message = "User ID is required")
+    //    @NotNull(message = "User ID is required")
     private Integer userId;
 
     @NotNull(message = "Rating is required")
