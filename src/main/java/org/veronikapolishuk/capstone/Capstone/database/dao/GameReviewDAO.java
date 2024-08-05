@@ -14,6 +14,6 @@ public interface GameReviewDAO extends JpaRepository<GameReview, Integer> {
     @Query("SELECT gr FROM GameReview gr WHERE gr.gameId = :gameId")
     List<GameReview> findReviewsByGameId(Integer gameId);
 
-    List<GameReview> findByUser(User user);
+    List<GameReview> findByUser(User user); //this fetches all game reviews
 
 }

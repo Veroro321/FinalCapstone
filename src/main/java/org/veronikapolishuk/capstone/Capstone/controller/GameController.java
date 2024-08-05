@@ -96,7 +96,7 @@ public class GameController {
             List<UserGame> myGames = userGameDAO.findByUser(user);
             response.addObject("myGames", myGames);
         } else {
-            response.setViewName("redirect:/loginPageUrl"); // Redirect to login if the user is not logged in
+            response.setViewName("redirect:/account/loginPageUrl"); // Redirect to login if the user is not logged in
         }
 
         return response;

@@ -117,7 +117,7 @@ public class ReviewController {
         return response;
     }
 
-    @GetMapping("/myReviews") //this will display all of user reviews
+    @GetMapping("/myReviews") //this will display all of the user reviews!!!
     public ModelAndView myReviews() {
         ModelAndView response = new ModelAndView("review/myReviews");
 
@@ -126,7 +126,7 @@ public class ReviewController {
             List<GameReview> reviews = gameReviewDAO.findByUser(user);
             response.addObject("reviews", reviews);
         } else {
-            response.setViewName("redirect:/loginPageUrl");
+            response.setViewName("redirect:/account/loginPageUrl");
         }
 
         return response;
