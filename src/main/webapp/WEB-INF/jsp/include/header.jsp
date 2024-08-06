@@ -84,7 +84,7 @@
 
             <sec:authorize access="hasAnyAuthority('ADMIN')">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/admin/dashboard">Admin Dashboard<span
+                    <a class="nav-link" href="/admin/reviewModeration">Admin Dashboard<span
                             class="sr-only">(current)</span></a>
                 </li>
             </sec:authorize>

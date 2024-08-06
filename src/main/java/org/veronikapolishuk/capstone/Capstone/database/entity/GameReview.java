@@ -20,13 +20,13 @@ public class GameReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
-    private Integer  reviewId;
+    private Integer reviewId;
 
     @Column(name = "user_id", insertable = false, updatable = false)
-    private Integer  userId;
+    private Integer userId;
 
     @Column(name = "game_id", insertable = false, updatable = false)
-    private Integer  gameId;
+    private Integer gameId;
 
     @Column(name = "rating")
     private Integer rating;
@@ -37,6 +37,9 @@ public class GameReview {
     @Column(name = "review_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date reviewDate;
+
+    @Column(name = "approved")
+    private boolean approved;  //this is newly added needed for ADMIN stuff
 
     @ToString.Exclude
     @ManyToOne
