@@ -151,6 +151,65 @@ public class ReviewController {
         return response;
     }
 
+    //--------------- This is for my reviews to be able to edit them---------------------
+
+
+    @GetMapping("/editReview")
+    public ModelAndView editReview(@RequestParam Integer reviewId) {
+        ModelAndView response = new ModelAndView("review/editReview");
+
+        GameReview review = gameReviewDAO.findById(reviewId).orElse(null);
+        if (review != null) {
+            response.addObject("review", review);
+            response.addObject("games", gameDAO.findAll());
+        } else {
+            response.setViewName("redirect:/myReviews");
+            response.addObject("errorMessage", "Review not found.");
+        }
+
+        return response;
+    }
+
+
+    @PostMapping("/editReviewSubmit")
+    public ModelAndView editReviewSubmit(@Valid CreateReviewFormBean form, BindingResult bindingResult) {
+        ModelAndView response = new ModelAndView("review/editReview");
+
+        if (bindingResult.hasErrors()) {
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                log.debug("Validation error : " + ((FieldError) error).getField() + " = " + error.getDefaultMessage());
+            }
+
+            response.addObject("bindingResult", bindingResult);
+            response.addObject("games", gameDAO.findAll());
+            return response;
+        }
+
+        GameReview review = gameReviewDAO.findById(form.getReviewId()).orElse(null);
+        if (review != null) {
+            Game game = gameDAO.findByGameId(form.getGameId());
+            User user = authenticatedUserUtilities.getCurrentUser();
+
+            if (game != null && user != null && review.getUser().equals(user)) {
+                review.setGame(game);
+                review.setRating(form.getRating());
+                review.setReviewText(form.getReviewText());
+
+                gameReviewDAO.save(review);
+                response.setViewName("redirect:/myReviews");
+            } else {
+                response.addObject("errorMessage", "Game not found, user not authenticated, or you don't have permission to edit this review.");
+                response.addObject("bindingResult", bindingResult);
+                response.addObject("games", gameDAO.findAll());
+            }
+        } else {
+            response.setViewName("redirect:/myReviews");
+            response.addObject("errorMessage", "Review not found.");
+        }
+
+        return response;
+    }
+
 
 }
 

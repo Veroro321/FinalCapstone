@@ -23,6 +23,10 @@
                 <input type="hidden" name="reviewId" value="${review.reviewId}">
                 <button type="submit">Delete</button>
             </form>
+            <form action="/editReview" method="get" style="display:inline;">
+                <input type="hidden" name="reviewId" value="${review.reviewId}">
+                <button type="submit">Edit</button>
+            </form>
         </div>
     </c:forEach>
 </div>
