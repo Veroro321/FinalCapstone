@@ -27,7 +27,7 @@ import java.util.List;
 public class GameController {
 
     @Autowired
-    private GameDAO gameDAO;
+    private GameDAO gameDAO; //where game details are located!!!
 
     @Autowired
     private GameReviewDAO gameReviewDAO;
@@ -118,7 +118,7 @@ public class GameController {
             return response;
         }
 
-        boolean isGameAlreadyAdded = userGameDAO.existsByUserAndGame(user, game); //please add that query into the userGameDAO
+        boolean isGameAlreadyAdded = userGameDAO.existsByUserAndGame(user, game);
         if (isGameAlreadyAdded) {
             response.addObject("errorMessage", "You have already added this game to your list.");
             return response;

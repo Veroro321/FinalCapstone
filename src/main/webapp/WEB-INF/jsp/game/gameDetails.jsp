@@ -129,7 +129,7 @@
             </button>
             <form action="/games/addToMyGames" method="post" style="display:inline;">
                 <input type="hidden" name="gameId" value="${game.gameId}">
-                <button type="submit" class="description-button">Add To My Games</button>
+                <button type="button" class="description-button" id="addToMyGamesButton">Add To My Games</button>
             </form>
 
         </div>
@@ -170,11 +170,13 @@
 </div>
 
 <script>
-    function addToGames(button) {
-        button.textContent = 'Added';
-        button.classList.add('added');
-        button.disabled = true;
-    }
+    document.getElementById("addToMyGamesButton").addEventListener("click", function () { //javascript stuff.....
+
+        alert("Game added to your list!");
+
+       
+        this.closest('form').submit();
+    });
 </script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -18,11 +18,11 @@
         <p>${review.user.email}: ${review.reviewText}</p>
         <p>Rating: ${review.rating}</p>
         <p>Reviewed on: ${review.reviewDate}</p>
-        <form action="/approveReview" method="post">
+        <form action="admin/approveReview" method="post">
             <input type="hidden" name="reviewId" value="${review.reviewId}">
             <button type="submit">Approve</button>
         </form>
-        <form action="/deleteReview" method="post">
+        <form action="/admin/deleteReview" method="post">
             <input type="hidden" name="reviewId" value="${review.reviewId}">
             <button type="submit">Delete</button>
         </form>

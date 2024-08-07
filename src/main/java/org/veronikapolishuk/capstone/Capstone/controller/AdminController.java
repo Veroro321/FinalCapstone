@@ -50,7 +50,10 @@ public class AdminController {
         return response;
     }
 
-    @PostMapping("/approveReview") //this is currently not working as intended, but this is good because
+    // why did I add this featuree??? bruh
+
+    @PostMapping("/approveReview")
+    //this is currently not working as intended, but this is good because I want the user to post comments without approval first
     public ModelAndView approveReview(@RequestParam Integer reviewId) {
         ModelAndView response = new ModelAndView("redirect:/admin/reviewModeration");
 

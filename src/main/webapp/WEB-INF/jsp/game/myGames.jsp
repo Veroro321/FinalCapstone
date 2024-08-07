@@ -37,14 +37,15 @@
         }
 
         .game-card {
+            display: flex;
             background: black;
             border-radius: 10px;
-            text-align: center;
-            padding: 15px;
             text-decoration: none;
             color: white;
-            width: 300px;
+            width: 100%;
+            max-width: 800px;
             transition: transform 0.3s, box-shadow 0.3s;
+            padding: 15px;
         }
 
         .game-card:hover {
@@ -53,33 +54,68 @@
         }
 
         .game-image {
-            width: 100%;
+            width: 200px;
             height: auto;
             border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .game-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .game-title {
-            margin-top: 10px;
             font-size: 1.5em;
             font-weight: bold;
         }
+
+        .game-description {
+            margin-top: 10px;
+        }
+
+        .delete-form {
+            margin-top: 10px;
+        }
+
+        .delete-button {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 10px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: red;
+        }
+
     </style>
 </head>
 <body>
 
-<h1>My Games</h1>
+<h1>My Game Library</h1>
 <div class="game-gallery">
     <c:forEach items="${myGames}" var="userGame">
         <c:set var="game" value="${userGame.game}"/>
-        <a href="/games/details?id=${game.gameId}" class="game-card">
-            <img src="${game.imageUrl}" alt="${game.title}" class="game-image">
-        </a>
-        <form action="/games/delete" method="post" class="delete-form">
-            <input type="hidden" name="gameId" value="${game.gameId}"/>
-            <button type="submit" class="delete-button">Delete</button>
-        </form>
+        <div class="game-card">
+            <a href="/games/details?id=${game.gameId}">
+                <img src="${game.imageUrl}" alt="${game.title}" class="game-image">
+            </a>
+            <div class="game-details">
+                <span class="game-title">${game.title}</span>
+                <p class="game-description">${game.description}</p>
+                <form action="/games/delete" method="post" class="delete-form">
+                    <input type="hidden" name="gameId" value="${game.gameId}"/>
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </div>
+        </div>
     </c:forEach>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmW3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -93,4 +129,3 @@
 </body>
 </html>
 <jsp:include page="../include/footer.jsp"/>
-
