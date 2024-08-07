@@ -72,9 +72,24 @@
             <div class="col-25">
                 <label for="rating">Rating</label>
             </div>
-            <div class="col-75">
-                <input type="number" id="rating" name="rating" min="1" max="5" required>
-            </div>
+            <%--            <div class="col-75">--%>
+            <%--                <input type="number" id="rating" name="rating" min="1" max="5" required>--%>
+            <%--            </div>--%>
+            <p>Please select your favorite Web language:</p>
+            <input type="radio" id="rating1" name="rating" value="1">
+            <label for="rating1">1</label><br>
+
+            <input type="radio" id="rating2" name="rating" value="2">
+            <label for="rating2">2</label><br>
+
+            <input type="radio" id="rating3" name="rating" value="3">
+            <label for="rating3">3</label>
+
+            <input type="radio" id="rating4" name="rating" value="4">
+            <label for="rating4">4</label>
+
+            <input type="radio" id="rating5" name="rating" value="5">
+            <label for="rating5">5</label>
         </div>
         <div class="row">
             <div class="col-25">

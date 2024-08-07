@@ -61,9 +61,13 @@ public class GameController {
 
         log.debug("The user searched for game: " + search);
 
-        response.addObject("search", search); //this is if we want to keep what the user typed in...
+        response.addObject("search", search); // this is if we want to keep what the user typed in...
 
         List<Game> games = gameDAO.findGameByTitle(search);
+
+        // Using stream with a lambda function to log game titles
+        games.stream().forEach(game -> log.debug("Game: " + game.getTitle()));
+
         response.addObject("games", games);
 
         return response;
