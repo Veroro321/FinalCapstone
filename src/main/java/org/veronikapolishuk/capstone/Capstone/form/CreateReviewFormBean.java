@@ -3,8 +3,6 @@ package org.veronikapolishuk.capstone.Capstone.form;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.ToString;
 
 import java.util.Date;
@@ -30,5 +28,7 @@ public class CreateReviewFormBean {
     private String reviewText;
 
     private Date reviewDate;
+
+    private boolean recommended; //newly added
 
 }

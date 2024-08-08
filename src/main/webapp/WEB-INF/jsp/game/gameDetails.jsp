@@ -114,6 +114,8 @@
         /*    background: linear-gradient(135deg, #6a11cb, #2575fc);*/
 
         /*}*/
+
+
     </style>
 </head>
 <body>
@@ -153,6 +155,7 @@
                 <th>Rating</th>
                 <th>Review Text</th>
                 <th>Review Date</th>
+                <th>Recommended</th>
             </tr>
             </thead>
             <tbody>
@@ -162,6 +165,7 @@
                     <td>${review.rating}/5</td>
                     <td>${review.reviewText}</td>
                     <td>${review.reviewDate}</td>
+                    <td>${review.recommended ? "Yes" : "No"}</td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -174,9 +178,10 @@
 
         alert("Game added to your list!");
 
-       
+
         this.closest('form').submit();
     });
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

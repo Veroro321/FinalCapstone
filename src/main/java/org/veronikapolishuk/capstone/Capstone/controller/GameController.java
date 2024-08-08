@@ -65,10 +65,24 @@ public class GameController {
 
         List<Game> games = gameDAO.findGameByTitle(search);
 
-        // Using stream with a lambda function to log game titles
+        // LAMDBAAA FUNCTION
         games.stream().forEach(game -> log.debug("Game: " + game.getTitle()));
 
         response.addObject("games", games);
+
+        return response;
+
+    }
+
+    // this is for the filter button of sci-fi stuff
+    @GetMapping("/theme")
+    public ModelAndView searchByTheme(@RequestParam("theme") String theme) {
+        ModelAndView response = new ModelAndView("game/games");
+
+        log.debug("The user searched for theme: " + theme);
+        List<Game> games = gameDAO.findGamesByThemeContaining(theme); // Using the native query method
+        response.addObject("games", games);
+        response.addObject("search", ""); // Clear the search field when searching by theme
 
         return response;
     }

@@ -98,6 +98,17 @@
             <div class="col-75">
                 <textarea id="reviewText" name="reviewText" required></textarea>
             </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="recommended">Recommended</label>
+                </div>
+                <div class="col-75">
+                    <input type="checkbox" id="recommended" name="recommended" value="true">
+                    <label for="recommended">Yes</label>
+                </div>
+            </div>
+
         </div>
         <input type="hidden" name="gameId" value="${gameId}">
         <input type="hidden" name="userId" value="${userId}">

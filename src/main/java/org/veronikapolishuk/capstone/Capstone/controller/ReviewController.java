@@ -96,6 +96,7 @@ public class ReviewController {
             review.setRating(form.getRating());
             review.setReviewText(form.getReviewText());
             review.setReviewDate(new Date());
+            review.setRecommended(form.isRecommended());
 
             gameReviewDAO.save(review);
             response.setViewName("redirect:/games/details?id=" + form.getGameId()); //that's were all the reviews are shown

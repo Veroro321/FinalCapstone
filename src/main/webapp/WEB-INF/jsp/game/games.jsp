@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="../include/header.jsp" />
+<jsp:include page="../include/header.jsp"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +13,7 @@
             color: white;
             font-family: Arial, sans-serif;
         }
+
         .game-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -21,6 +22,7 @@
             padding: 20px;
             width: 100%;
         }
+
         .game-card {
             background-color: #000000;
             border-radius: 15px;
@@ -29,10 +31,12 @@
             box-shadow: 0 4px 8px rgba(254, 239, 239, 0.3);
             position: relative;
         }
+
         .game-card img {
             width: 100%;
             border-bottom: 2px solid #444;
         }
+
         .card-title {
             position: absolute;
             bottom: 10px;
@@ -42,10 +46,12 @@
             padding: 5px;
             border-radius: 5px;
         }
+
         .game-card:hover {
             transform: scale(1.1);
             transition: transform 0.3s ease-in-out;
         }
+
         .game-card::after {
             content: "";
             position: absolute;
@@ -57,14 +63,17 @@
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
         }
+
         .game-card:hover::after {
             opacity: 1;
         }
+
         .search-container {
             display: flex;
             justify-content: flex-end;
             margin-bottom: 20px;
         }
+
         .search-bar {
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -72,7 +81,8 @@
             font-size: 16px;
             margin-left: 600px;
         }
-        .search-button {
+
+        .search-button, .sci-fi-button {
             padding: 10px 15px;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             border: none;
@@ -81,6 +91,16 @@
             color: white;
 
         }
+
+        .sci-fi-button {
+            margin-bottom: 0;
+            margin-top: 0;
+            margin-left: 20px;
+            border-radius: 80px;
+            margin-right: 0px;
+        }
+
+        left
         h1 {
             text-align: center;
 
@@ -93,6 +113,7 @@
             margin-top: 100px;
             margin-left: 150px;
         }
+
         <%--.section-header {--%>
         <%--    margin-top: 30px;--%>
         <%--    margin-bottom: 60px;--%>
@@ -115,10 +136,16 @@
 <div class="header-container">
     <h1>Latest Games</h1>
     <div class="search-container">
-        <form method="GET" action="/games/search"> <%-- not sure if method+"GET" is needed here --%>
-            <input type="text" value="${search}" class="search-bar" name="search" placeholder="Search Games..."> <%-- the name here is what is going to go in our url, value="${search} is going to add --%>
+        <form method="GET" action="/games/theme">
+            <input type="hidden" name="theme" value="Sci-Fi">
+            <button type="submit" class="sci-fi-button">Search Sci-Fi</button>
+        </form>
+        <form method="GET" action="/games/search">
+            <input type="text" value="${search}" class="search-bar" name="search"
+                   placeholder="Search Games..."> <%-- the name here is what is going to go in our url, value="${search} is going to add --%>
             <button type="submit" class="search-button">Search</button>
         </form>
+
     </div>
 </div>
 

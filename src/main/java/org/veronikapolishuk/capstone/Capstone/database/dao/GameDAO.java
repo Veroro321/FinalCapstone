@@ -16,5 +16,8 @@ public interface GameDAO extends JpaRepository<Game, Integer> {
 
     List<Game> findAll();
 
+    // Native query!!!! Wooooo HOOOOOO
+    @Query(value = "SELECT * FROM Games WHERE theme LIKE '%Sci-Fi%'", nativeQuery = true)
+    List<Game> findGamesByThemeContaining(@Param("theme") String theme);
 
 }

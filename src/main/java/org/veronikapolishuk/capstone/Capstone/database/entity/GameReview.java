@@ -4,7 +4,6 @@ package org.veronikapolishuk.capstone.Capstone.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Setter
@@ -40,6 +39,9 @@ public class GameReview {
 
     @Column(name = "approved")
     private boolean approved;  //this is newly added needed for ADMIN stuff
+
+    @Column(name = "recommended")
+    private boolean recommended; //newly added stuff needed for
 
     @ToString.Exclude
     @ManyToOne
