@@ -1,4 +1,4 @@
-<jsp:include page="include/header.jsp" />
+<jsp:include page="include/header.jsp"/>
 
 <!doctype html>
 <html lang="en">
@@ -13,14 +13,23 @@
             background-color: black;
             color: white; /* Optional: Set text color to white for better readability */
         }
+
         .page-title {
             color: white; /* Optional: Ensure the title text is visible */
         }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<body>
-    <h1 class="page-title">ALL YOUR GAMES AND FRIENDS IN ONE PLACE</h1>
+<h1 class="page-title" style="font-size: 3em; text-align: center; margin-top: 190px;">
+    ALL YOUR <span class="gradient-text">GAMES</span> AND FRIENDS IN ONE PLACE
+</h1>
+
 </body>
 </html>
 
-<jsp:include page="include/footer.jsp" />
+<jsp:include page="include/footer.jsp"/>
