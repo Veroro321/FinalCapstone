@@ -16,12 +16,12 @@ A web application built using Spring Boot that allows users to create, manage, a
 - **Review System:** Users can submit and manage reviews for games.
 - **Admin Features:** Admin users can moderate and delete reviews.
 - **User Profiles:** Each user has a profile showing their games and reviews.
-- **Responsive Design:** The application is optimized for different screen sizes.
+
 
 ## Tech Stack
 - **Backend:** Java, Spring Boot, Spring Security
 - **Frontend:** JSP, HTML, CSS, JavaScript
-- **Database:** MySQL (or another relational database supported by JPA)
+- **Database:** MySQL 
 - **Build Tool:** Maven
 - **Dependency Management:** Spring Framework, Lombok, JPA
 - **Security:** BCrypt for password encryption, Spring Security for role-based access control
