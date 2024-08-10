@@ -8,6 +8,8 @@ A web application built using Spring Boot that allows users to create, manage, a
 
 <img width="720" alt="Screenshot 2024-08-08 at 5 30 15 PM" src="https://github.com/user-attachments/assets/2959568f-d975-4977-bcfe-d891bd24c3c7">
 
+<img width="722" alt="Screenshot 2024-08-10 at 12 54 58 PM" src="https://github.com/user-attachments/assets/f155b847-b483-4b7d-b2c1-21fcf119106e">
+
 ## Features
 - **User Authentication & Authorization:** Secure login and role-based access control with Spring Security.
 - **Game Management:** Users can view, search, and filter games by title or theme.
