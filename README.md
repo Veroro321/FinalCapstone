@@ -8,7 +8,6 @@ A web application built using Spring Boot that allows users to create, manage, a
 
 ![Screenshot 2024-08-28 at 2 34 13 PM](https://github.com/user-attachments/assets/abd5f787-f565-4245-9aff-5f3d7d4cdea5)
 
-<img width="722" alt="Screenshot 2024-08-10 at 12 54 58 PM" src="https://github.com/user-attachments/assets/f155b847-b483-4b7d-b2c1-21fcf119106e">
 
 ## Features
 - **User Authentication & Authorization:** Secure login and role-based access control with Spring Security.
