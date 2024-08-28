@@ -2,12 +2,12 @@
 
 ## Project Description
 A web application built using Spring Boot that allows users to create, manage, and review games. It includes features such as user authentication, role-based access control, and a dynamic content display based on user roles. Users can search for games, view game details, add games to their personal list, and submit reviews.
-![Screenshot 2024-08-28 at 2 32 28 PM](https://github.com/user-attachments/assets/4e08cf75-7997-46b1-af73-9d9a282d47f5)
 
-![Screenshot 2024-08-28 at 2 33 19 PM](https://github.com/user-attachments/assets/d076f4bc-96bb-43ae-a52c-fe1b8e5f882c)
+<img src="https://github.com/user-attachments/assets/4e08cf75-7997-46b1-af73-9d9a282d47f5" width="800"/>
 
-![Screenshot 2024-08-28 at 2 34 13 PM](https://github.com/user-attachments/assets/abd5f787-f565-4245-9aff-5f3d7d4cdea5)
+<img src="https://github.com/user-attachments/assets/d076f4bc-96bb-43ae-a52c-fe1b8e5f882c" width="800"/>
 
+<img src="https://github.com/user-attachments/assets/abd5f787-f565-4245-9aff-5f3d7d4cdea5" width="800"/>
 
 ## Features
 - **User Authentication & Authorization:** Secure login and role-based access control with Spring Security.
